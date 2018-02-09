@@ -1,8 +1,9 @@
+(define (fact-iter n p i)
+    (if (< n i)
+    p
+    (fact-iter n (* p i) (+ 1 i))))
+
 (define (factorial n)
-    (define (fact-iter product counter)
-        (if (> counter n)
-            product
-            (fact-iter (* counter product)
-                (+ counter 1)
-                n)))
-    (fact-iter 1 1 n))
+    (fact-iter n 1 1))
+
+(factorial 5)

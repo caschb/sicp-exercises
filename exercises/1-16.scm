@@ -1,18 +1,12 @@
-;; needs testing
-
-(define (fast-exp base exponent)
-    (fast-exp-iter 1 base exponent))
-
-(define (fast-exp-iter product base exponent)
-    (cond ((= exponent 0) product)
-        ((even? exponent) (fast-exp-iter product (square base) (/ exponent 2)))
-        (else (fast-exp-iter (* product base) base (- exponent 1)))
-        ))
+(define (fast-expt b n a)
+	(cond ((= n 0) a)
+		  ((even? n) (fast-expt (square b) (/ n 2) a))
+		  (else (fast-expt b (- n 1) (* a b)))))
 
 (define (even? n)
-    (= (remainder n 2) 0))
+	(= (remainder n 2) 0))
 
 (define (square n)
-    (* n n))
+	(* n n))
 
-(fast-exp 3 3)
+(fast-expt 2 12 1)
